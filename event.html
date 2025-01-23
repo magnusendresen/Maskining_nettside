@@ -1,83 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event</title>
+    <title>Arrangementer</title>
     <style>
-        .container {
-            display: flex;
-            flex-wrap: wrap;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+            color: #333;
         }
-        .box {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px;
-            width: 200px;
-            text-align: center;
+        .event-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .box img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+        .event-group {
+            margin-bottom: 30px;
+        }
+        .event-group h2 {
             margin-bottom: 10px;
+            text-transform: capitalize;
+            color: #007bff;
+        }
+        .event {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .date-box {
+            width: 80px;
+            text-align: center;
+            font-weight: bold;
+            color: #555;
+            margin-right: 20px;
+        }
+        .date-box .day {
+            font-size: 2em;
+            color: #007bff;
+        }
+        .date-box .weekday {
+            text-transform: uppercase;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .details {
+            flex-grow: 1;
+        }
+        .details h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .details p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .details .location {
+            font-style: italic;
+            color: #666;
+        }
+        .details .description {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container"></div>
+    <div class="event-container" id="event-container">
+        <!-- Dynamic content will be injected here -->
+    </div>
+
     <script>
-        async function loadEvent() {
+        async function loadEvents() {
             try {
                 const response = await fetch('text contents/event.json');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                const data = await response.json();
+                const events = await response.json();
 
-                const container = document.querySelector('.container');
-                container.innerHTML = ''; // Clear the container
+                const container = document.getElementById('event-container');
+                container.innerHTML = ''; // Clear container
 
-                for (const role in data) {
-                    data[role].forEach(person => {
-                        const box = document.createElement('div');
-                        box.className = 'box';
+                const groupedEvents = groupEventsByMonth(events);
 
-                        const img = document.createElement('img');
-                        img.src = `img/leadership/${role}.png`;
-                        img.alt = `${role}`;
-                        box.appendChild(img);
+                for (const [month, events] of Object.entries(groupedEvents)) {
+                    const eventGroup = document.createElement('div');
+                    eventGroup.className = 'event-group';
 
-                        const title = document.createElement('h2');
-                        title.textContent = role.charAt(0).toUpperCase() + role.slice(1);
-                        box.appendChild(title);
+                    const groupTitle = document.createElement('h2');
+                    groupTitle.textContent = month;
+                    eventGroup.appendChild(groupTitle);
 
-                        const name = document.createElement('p');
-                        name.innerHTML = `<strong>Navn:</strong> ${person.name}`;
-                        box.appendChild(name);
-
-                        const location = document.createElement('p');
-                        location.innerHTML = `<strong>Sted:</strong> ${person.location}`;
-                        box.appendChild(location);
-
-                        const description = document.createElement('p');
-                        description.innerHTML = `<strong>Beskrivelse:</strong> ${person.description}`;
-                        box.appendChild(description);
-
-                        const date = document.createElement('p');
-                        date.innerHTML = `<strong>Dato:</strong> ${person.date}`;
-                        box.appendChild(date);
-
-                        container.appendChild(box);
+                    events.forEach(event => {
+                        const eventElement = createEventElement(event);
+                        eventGroup.appendChild(eventElement);
                     });
+
+                    container.appendChild(eventGroup);
                 }
             } catch (error) {
                 console.error('Error loading event data:', error);
             }
         }
 
-        document.addEventListener('DOMContentLoaded', loadEvent);
+        function groupEventsByMonth(events) {
+            const months = {
+                0: 'januar',
+                1: 'februar',
+                2: 'mars',
+                3: 'april',
+                4: 'mai',
+                5: 'juni',
+                6: 'juli',
+                7: 'august',
+                8: 'september',
+                9: 'oktober',
+                10: 'november',
+                11: 'desember'
+            };
+
+            const grouped = {};
+
+            events.forEach(event => {
+                const date = new Date(event.date);
+                const monthYear = `${months[date.getMonth()]} ${date.getFullYear()}`;
+
+                if (!grouped[monthYear]) {
+                    grouped[monthYear] = [];
+                }
+                grouped[monthYear].push(event);
+            });
+
+            return grouped;
+        }
+
+        function createEventElement(event) {
+            const date = new Date(event.date);
+
+            const eventDiv = document.createElement('div');
+            eventDiv.className = 'event';
+
+            const dateBox = document.createElement('div');
+            dateBox.className = 'date-box';
+            dateBox.innerHTML = `
+                <div class="weekday">${date.toLocaleString('no', { weekday: 'short' })}</div>
+                <div class="day">${date.getDate()}</div>
+            `;
+
+            const details = document.createElement('div');
+            details.className = 'details';
+            details.innerHTML = `
+                <h3>${event.title}</h3>
+                <p class="location">${event.location}</p>
+                <p class="description">${event.description}</p>
+                <p>${event.price}</p>
+            `;
+
+            eventDiv.appendChild(dateBox);
+            eventDiv.appendChild(details);
+
+            return eventDiv;
+        }
+
+        document.addEventListener('DOMContentLoaded', loadEvents);
     </script>
 </body>
 </html>
