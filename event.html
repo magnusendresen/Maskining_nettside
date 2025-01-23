@@ -57,9 +57,17 @@
                         name.innerHTML = `<strong>Navn:</strong> ${person.name}`;
                         box.appendChild(name);
 
-                        const email = document.createElement('p');
-                        email.innerHTML = `<strong>Email:</strong> ${person.email}`;
-                        box.appendChild(email);
+                        const location = document.createElement('p');
+                        location.innerHTML = `<strong>Sted:</strong> ${person.location}`;
+                        box.appendChild(location);
+
+                        const description = document.createElement('p');
+                        description.innerHTML = `<strong>Beskrivelse:</strong> ${person.description}`;
+                        box.appendChild(description);
+
+                        const date = document.createElement('p');
+                        date.innerHTML = `<strong>Dato:</strong> ${person.date}`;
+                        box.appendChild(date);
 
                         container.appendChild(box);
                     });
