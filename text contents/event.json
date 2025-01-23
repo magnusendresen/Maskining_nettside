@@ -1,9 +1,10 @@
 {
-    "leder": [
+    "kaenfkag": [
         {
-            "name": "Andreas Smedsrud", 
-            "email": "leder@maskining.no",
-            "age": "21"
+            "title": "Åre", 
+            "location": "Åre",
+            "Description": "FYLLA!!!",
+            "Date": "2020-02-20"
         }
     ],
     "nestleder": [
