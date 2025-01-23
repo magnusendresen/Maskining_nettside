@@ -52,13 +52,13 @@
                         const title = document.createElement('h2');
                         title.textContent = role.charAt(0).toUpperCase() + role.slice(1);
                         box.appendChild(title);
-
-                        const name = document.createElement('p');
-                        name.innerHTML = `<strong>Navn:</strong> ${person.name}`;
-                        box.appendChild(name);
+                        
+                        const what = document.createElement('p');
+                        what.innerHTML = `<strong>Hva:</strong> ${person.what}`;
+                        box.appendChild(what);
 
                         const location = document.createElement('p');
-                        location.innerHTML = `<strong>Sted:</strong> ${person.location}`;
+                        location.innerHTML = `<strong>Lokasjon:</strong> ${person.location}`;
                         box.appendChild(location);
 
                         const description = document.createElement('p');
