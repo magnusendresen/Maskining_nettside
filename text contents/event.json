@@ -1,18 +1,18 @@
 {
     "kaenfkag": [
         {
-            "title": "Åre", 
+            "what": "Åre", 
             "location": "Åre",
-            "Description": "FYLLA!!!",
-            "Date": "2020-02-20"
+            "description": "FYLLA!!!",
+            "date": "2020-02-20"
         }
     ],
     "kajenfka": [
         {
-            "title": "Stockholm", 
+            "what": "Stockholm", 
             "location": "Stockholm",
-            "Description": "FEST!!!",
-            "Date": "2020-02-21"
+            "description": "FEST!!!",
+            "date": "2020-02-21"
         }
     ]
 }
