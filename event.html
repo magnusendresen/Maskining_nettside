@@ -1,95 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<style>
-    body {
-        background-color: white;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-    }
-    .box {
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 20px;
-        background-color: #f9f9f9;
-        width: 300px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-    .box h2 {
-        margin-top: 0;
-        color: #333;
-    }
-    .box p {
-        margin: 5px 0;
-        color: #555;
-    }
-    .box img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 10px;
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Event</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
     <script>
         async function loadEvent() {
-            const response = await fetch('text contents/event.json');
-            const data = await response.json();
+            try {
+                const response = await fetch('text contents/event.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
 
-            const container = document.querySelector('.container');
-            container.innerHTML = ''; // Clear the container
+                const container = document.querySelector('.container');
+                container.innerHTML = ''; // Clear the container
 
-            for (const role in data) {
-                data[role].forEach(person => {
-                    const box = document.createElement('div');
-                    box.className = 'box';
+                for (const role in data) {
+                    data[role].forEach(person => {
+                        const box = document.createElement('div');
+                        box.className = 'box';
 
-                    const img = document.createElement('img');
-                    img.src = `img/leadership/${role}.png`;
-                    img.alt = `${role}`;
-                    box.appendChild(img);
+                        const img = document.createElement('img');
+                        img.src = `img/leadership/${role}.png`;
+                        img.alt = `${role}`;
+                        box.appendChild(img);
 
-                    const title = document.createElement('h2');
-                    title.textContent = role.charAt(0).toUpperCase() + role.slice(1);
-                    box.appendChild(title);
+                        const title = document.createElement('h2');
+                        title.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+                        box.appendChild(title);
 
-                    const name = document.createElement('p');
-                    name.innerHTML = `<strong>Navn:</strong> ${person.name}`;
-                    box.appendChild(name);
+                        const name = document.createElement('p');
+                        name.innerHTML = `<strong>Navn:</strong> ${person.name}`;
+                        box.appendChild(name);
 
-                    const email = document.createElement('p');
-                    email.innerHTML = `<strong>Email:</strong> ${person.email}`;
-                    box.appendChild(email);
+                        const email = document.createElement('p');
+                        email.innerHTML = `<strong>Email:</strong> ${person.email}`;
+                        box.appendChild(email);
 
-                    const age = document.createElement('p');
-                    age.innerHTML = `<strong>Alder:</strong> ${person.age}`;
-                    box.appendChild(age);
-
-                    container.appendChild(box);
-                });
+                        container.appendChild(box);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading event data:', error);
             }
         }
 
-        window.onload = loadevent;
+        document.addEventListener('DOMContentLoaded', loadEvent);
     </script>
-</head>
-<body>
-    <div class="container">
-        <!-- Dynamic content will be injected here -->
-    </div>
-    
 </body>
 </html>
