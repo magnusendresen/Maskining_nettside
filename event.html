@@ -1,104 +1,95 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
+
+<style>
+    body {
+        background-color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .box {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        width: 300px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .box h2 {
+        margin-top: 0;
+        color: #333;
+    }
+    .box p {
+        margin: 5px 0;
+        color: #555;
+    }
+    .box img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrangementer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 20px;
-            color: #333;
+    <title>Document</title>
+    <script>
+        async function loadLeadership() {
+            const response = await fetch('text contents/leadership.json');
+            const data = await response.json();
+
+            const container = document.querySelector('.container');
+            container.innerHTML = ''; // Clear the container
+
+            for (const role in data) {
+                data[role].forEach(person => {
+                    const box = document.createElement('div');
+                    box.className = 'box';
+
+                    const img = document.createElement('img');
+                    img.src = `img/leadership/${role}.png`;
+                    img.alt = `${role}`;
+                    box.appendChild(img);
+
+                    const title = document.createElement('h2');
+                    title.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+                    box.appendChild(title);
+
+                    const name = document.createElement('p');
+                    name.innerHTML = `<strong>Navn:</strong> ${person.name}`;
+                    box.appendChild(name);
+
+                    const email = document.createElement('p');
+                    email.innerHTML = `<strong>Email:</strong> ${person.email}`;
+                    box.appendChild(email);
+
+                    const age = document.createElement('p');
+                    age.innerHTML = `<strong>Alder:</strong> ${person.age}`;
+                    box.appendChild(age);
+
+                    container.appendChild(box);
+                });
+            }
         }
-        .event-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .event {
-            display: flex;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 20px;
-        }
-        .date-box {
-            width: 100px;
-            text-align: center;
-            font-weight: bold;
-            color: #555;
-            margin-right: 20px;
-        }
-        .date-box .day {
-            font-size: 2em;
-            color: #007bff;
-        }
-        .date-box .month {
-            text-transform: capitalize;
-            font-size: 1em;
-        }
-        .details {
-            flex-grow: 1;
-        }
-        .details h2 {
-            margin: 0 0 10px;
-            font-size: 1.5em;
-            color: #333;
-        }
-        .details p {
-            margin: 5px 0;
-            color: #555;
-        }
-        .details .location {
-            font-style: italic;
-            color: #666;
-        }
-        .price {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-    </style>
+
+        window.onload = loadevent;
+    </script>
 </head>
 <body>
-    <h1>Kommende arrangementer</h1>
-    <div class="event-container">
-        <div class="event">
-            <div class="date-box">
-                <div class="day">2</div>
-                <div class="month">februar 2025</div>
-            </div>
-            <div class="details">
-                <h2>Åre 2025!</h2>
-                <p class="location">Åre Trondheimsleden 52, Åre, Sverige</p>
-                <p>Tim & Shænko til Åre 2025! Bli med på årets høydepunkt i Åre! Det er duket for fem elleville dager den 2. til 6. februar 2025!</p>
-                <p class="price">520,00</p>
-            </div>
-        </div>
-        <div class="event">
-            <div class="date-box">
-                <div class="day">28</div>
-                <div class="month">mars 2025</div>
-            </div>
-            <div class="details">
-                <h2>Hyttetur til Haugen Gård</h2>
-                <p class="location">Haugen Gård Nerskogveien 162, 7340 Oppdal, Norge</p>
-                <p>Årets hyttetur med Turklubben går til Haugen Gård på Oppdal fredag 28. mars til 30. mars. Vi legger opp til at middag og overnatting er inkludert i prisen, frokost og...</p>
-                <p class="price">560,00</p>
-            </div>
-        </div>
-        <div class="event">
-            <div class="date-box">
-            <div class="day">DD</div>
-            <div class="month">MMMM YYYY</div>
-            </div>
-            <div class="details">
-            <h2>Event Title</h2>
-            <p class="location">Event Location</p>
-            <p>Event Description</p>
-            <p class="price">Event Price</p>
-            </div>
-        </div>
+    <div class="container">
+        <!-- Dynamic content will be injected here -->
     </div>
+    
 </body>
 </html>
