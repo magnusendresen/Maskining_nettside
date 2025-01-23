@@ -45,8 +45,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        async function loadLeadership() {
-            const response = await fetch('text contents/leadership.json');
+        async function loadEvent() {
+            const response = await fetch('text contents/event.json');
             const data = await response.json();
 
             const container = document.querySelector('.container');
