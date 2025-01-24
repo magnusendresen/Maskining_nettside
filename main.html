@@ -9,67 +9,59 @@
 <body>
 
     <div class="header">
-        <img src="img/MiT Logo.svg" alt="MiT Logo">
+        <img src="content/img/MiT Logo.svg" alt="MiT Logo">
         <h1>Maskiningeniør i Trondheim</h1>
     </div>
 
     <nav>
         <ul>
             <li>
-                <!-- <a href="#" onclick="hideAll(); document.querySelector('.info-container').style.display = 'flex';">Om oss</a> -->
                 <a href="#">Om oss</a>
                 <ul>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.leaders-container').style.display = 'flex';">Styret</a></li>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.history-container').style.display = 'flex';">Historie</a></li>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.vision-container').style.display = 'flex';">Visjon</a></li>
+                    <li><a href="#" onclick="loadContent('leaders')">Styret</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" onclick="hideAll(); document.querySelector('.events-container').style.display = 'flex';">Arrangementer</a>
+                <a href="#" onclick="loadContent('events')">Arrangementer</a>
             </li>
             <li>
-                <a href="#" onclick="hideAll(); document.querySelector('.membership-container').style.display = 'flex';">Medlemskap</a>
-                <ul>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.benefits-container').style.display = 'flex';">Fordeler</a></li>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.join-membership-container').style.display = 'flex';">Bli medlem</a></li>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.fees-container').style.display = 'flex';">Kontingent</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" onclick="hideAll(); document.querySelector('.resources-container').style.display = 'flex';">Ressurser</a>
-                <ul>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.documents-container').style.display = 'flex';">Dokumenter</a></li>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.faq-container').style.display = 'flex';">FAQ</a></li>
-                    <li><a href="#" onclick="hideAll(); document.querySelector('.contact-us-container').style.display = 'flex';">Kontakt oss</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" onclick="hideAll(); document.querySelector('.calendar-container').style.display = 'flex';">Kalender</a>
+                <a href="#" onclick="loadContent('calendar')">Kalender</a>
             </li>
         </ul>
     </nav>
 
+    <main>
+        <div id="content">
+            <!-- Dynamisk innhold vil lastes inn her -->
+        </div>
+    </main>
+
     <script>
-        function hideAll() {
-            document.querySelector('.calendar-container').style.display = 'none';
-            document.querySelector('.events-container').style.display = 'none';
-            document.querySelector('.leaders-container').style.display = 'none';
-            // document.querySelector('.history-container').style.display = 'none';
-            // document.querySelector('.vision-container').style.display = 'none';
-            // document.querySelector('.membership-container').style.display = 'none';
-            // document.querySelector('.benefits-container').style.display = 'none';
-            // document.querySelector('.join-membership-container').style.display = 'none';
-            // document.querySelector('.fees-container').style.display = 'none';
-            // document.querySelector('.resources-container').style.display = 'none';
-            // document.querySelector('.documents-container').style.display = 'none';
-            // document.querySelector('.faq-container').style.display = 'none';
-            // document.querySelector('.contact-us-container').style.display = 'none';
+        function loadContent(page) {
+            const contentDiv = document.getElementById('content');
+            const url = `content/${page}.html`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Kunne ikke laste inn innhold.');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    contentDiv.innerHTML = data;
+
+                    // Sjekk og kjør eventuelle script-tags fra det dynamiske innholdet
+                    const scripts = contentDiv.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        eval(script.textContent); // Kjører inline script
+                    });
+                })
+                .catch(error => {
+                    contentDiv.innerHTML = `<p>${error.message}</p>`;
+                });
         }
     </script>
-
-    <script src="leaders.js" onload="main()"></script>
-    <script src="events.js" onload="main()"></script>
-    <script src="calendar.js" onload="main()"></script>
 
     <footer>
         <p>&copy; 2025 Maskiningeniør i Trondheim. Alle rettigheter reservert.</p>

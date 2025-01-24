@@ -1,14 +1,13 @@
 TO DO:
 
-
-- Lage felles mal for utseende på sidene
+- Starte på en slags ordbok for MiT-ere
 
 - Lage en "ekte" google kalender for arrangementer
+
+- Lage teksten som skal stå på startsiden, komme med idéer til eventuelle bilde og andre ting
 
 - Egne nettsider til hvert arrangement?
         - Trykke på et gitt arrangement og kommer inn på egen side om det arrangementet?
         - Se Tim og Shænko sin nettside
-
-X Gjøre så MIT-logoen tar brukeren til home.html
 
 - Ta en pils
