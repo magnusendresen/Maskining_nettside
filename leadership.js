@@ -1,5 +1,10 @@
-function leadership() {
-    fetch('text contents/leadership.json')
+function main() {
+    // Create the container for the leadership
+    const leadershipContainer = document.createElement("div");
+    leadershipContainer.className = "container";
+    document.body.appendChild(leadershipContainer);
+
+    fetch('text_contents/leadership.json')
         .then(response => response.json())
         .then(data => {
             const container = document.querySelector('.container');
@@ -37,5 +42,3 @@ function leadership() {
         })
         .catch(error => console.error('Error loading leadership data:', error));
 }
-
-document.querySelector('button').addEventListener('click', loadLeadership);
