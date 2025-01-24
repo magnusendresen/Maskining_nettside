@@ -4,13 +4,13 @@ function main() {
     wrapper.className = "wrapper";
     document.body.appendChild(wrapper);
 
-    // Create the container for the leadership
-    const leadershipContainer = document.createElement("div");
-    leadershipContainer.className = "leadership-container";
-    leadershipContainer.style.display = 'none'; // Initially hidden
-    wrapper.appendChild(leadershipContainer);
+    // Create the container for the leaders
+    const leadersContainer = document.createElement("div");
+    leadersContainer.className = "leaders-container";
+    leadersContainer.style.display = 'none'; // Initially hidden
+    wrapper.appendChild(leadersContainer);
 
-    fetch('text_contents/leadership.json')
+    fetch('text_contents/leaders.json')
         .then(response => response.json())
         .then(data => {
             for (const role in data) {
@@ -19,7 +19,7 @@ function main() {
                     box.className = 'box';
 
                     const img = document.createElement('img');
-                    img.src = `img/leadership/${role}.png`;
+                    img.src = `img/leaders/${role}.png`;
                     img.alt = `${role}`;
                     box.appendChild(img);
 
@@ -43,25 +43,9 @@ function main() {
                     infoContainer.appendChild(age);
 
                     box.appendChild(infoContainer);
-                    leadershipContainer.appendChild(box);
+                    leadersContainer.appendChild(box);
                 });
             }
         })
-        .catch(error => console.error('Error loading leadership data:', error));
-}
-
-function showLeaders() {
-    const container = document.querySelector('.leadership-container');
-    if (container) {
-        container.style.display = 'flex';
-        container.style.justifyContent = 'center';
-        container.style.flexWrap = 'wrap';
-    }
-}
-
-function hideLeaders() {
-    const container = document.querySelector('.leadership-container');
-    if (container) {
-        container.style.display = 'none';
-    }
+        .catch(error => console.error('Error loading leaders data:', error));
 }

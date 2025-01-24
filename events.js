@@ -1,7 +1,7 @@
 function main() {
     // Create the container for the events
     const eventsWrapper = document.createElement("div");
-    eventsWrapper.className = "events-wrapper";
+    eventsWrapper.className = "events-container"; // Change class name to 'events-container'
     eventsWrapper.style.display = "none"; // Initially hide the container
     document.body.appendChild(eventsWrapper);
 
@@ -40,16 +40,4 @@ function main() {
             }
         })
         .catch(error => console.error('Error loading event data:', error));
-}
-
-// Function to show the events container
-function showEvents() {
-    const eventsWrapper = document.querySelector(".events-wrapper");
-    eventsWrapper.style.display = "flex";
-}
-
-// Function to hide the events container
-function hideEvents() {
-    const eventsWrapper = document.querySelector(".events-wrapper");
-    eventsWrapper.style.display = "none";
 }

@@ -16,57 +16,58 @@
     <nav>
         <ul>
             <li>
-                <a href="#" onclick="hideAll(); showLeaders()">Om oss</a>
+                <!-- <a href="#" onclick="hideAll(); document.querySelector('.info-container').style.display = 'flex';">Om oss</a> -->
+                <a href="#">Om oss</a>
                 <ul>
-                    <li><a href="#" onclick="hideAll(); showLeaders()">Styret</a></li>
-                    <li><a href="#" onclick="hideAll(); showHistory()">Historie</a></li>
-                    <li><a href="#" onclick="hideAll(); showVision()">Visjon</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.leaders-container').style.display = 'flex';">Styret</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.history-container').style.display = 'flex';">Historie</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.vision-container').style.display = 'flex';">Visjon</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" onclick="hideAll(); showEvents()">Arrangementer</a>
+                <a href="#" onclick="hideAll(); document.querySelector('.events-container').style.display = 'flex';">Arrangementer</a>
             </li>
             <li>
-                <a href="#" onclick="hideAll(); showMembership()">Medlemskap</a>
+                <a href="#" onclick="hideAll(); document.querySelector('.membership-container').style.display = 'flex';">Medlemskap</a>
                 <ul>
-                    <li><a href="#" onclick="hideAll(); showBenefits()">Fordeler</a></li>
-                    <li><a href="#" onclick="hideAll(); joinMembership()">Bli medlem</a></li>
-                    <li><a href="#" onclick="hideAll(); showFees()">Kontingent</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.benefits-container').style.display = 'flex';">Fordeler</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.join-membership-container').style.display = 'flex';">Bli medlem</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.fees-container').style.display = 'flex';">Kontingent</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" onclick="hideAll(); showResources()">Ressurser</a>
+                <a href="#" onclick="hideAll(); document.querySelector('.resources-container').style.display = 'flex';">Ressurser</a>
                 <ul>
-                    <li><a href="#" onclick="hideAll(); showDocuments()">Dokumenter</a></li>
-                    <li><a href="#" onclick="hideAll(); showFAQ()">FAQ</a></li>
-                    <li><a href="#" onclick="hideAll(); contactUs()">Kontakt oss</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.documents-container').style.display = 'flex';">Dokumenter</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.faq-container').style.display = 'flex';">FAQ</a></li>
+                    <li><a href="#" onclick="hideAll(); document.querySelector('.contact-us-container').style.display = 'flex';">Kontakt oss</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#" onclick="hideAll(); showCalendar()">Kalender</a>
+                <a href="#" onclick="hideAll(); document.querySelector('.calendar-container').style.display = 'flex';">Kalender</a>
             </li>
         </ul>
     </nav>
 
     <script>
         function hideAll() {
-            hideCalendar();
-            hideEvents();
-            hideLeaders();
-            // hideHistory();
-            // hideVision();
-            // hideMembership();
-            // hideBenefits();
-            // hideJoinMembership();
-            // hideFees();
-            // hideResources();
-            // hideDocuments();
-            // hideFAQ();
-            // hideContactUs();
+            document.querySelector('.calendar-container').style.display = 'none';
+            document.querySelector('.events-container').style.display = 'none';
+            document.querySelector('.leaders-container').style.display = 'none';
+            // document.querySelector('.history-container').style.display = 'none';
+            // document.querySelector('.vision-container').style.display = 'none';
+            // document.querySelector('.membership-container').style.display = 'none';
+            // document.querySelector('.benefits-container').style.display = 'none';
+            // document.querySelector('.join-membership-container').style.display = 'none';
+            // document.querySelector('.fees-container').style.display = 'none';
+            // document.querySelector('.resources-container').style.display = 'none';
+            // document.querySelector('.documents-container').style.display = 'none';
+            // document.querySelector('.faq-container').style.display = 'none';
+            // document.querySelector('.contact-us-container').style.display = 'none';
         }
     </script>
 
-    <script src="leadership.js" onload="main()"></script>
+    <script src="leaders.js" onload="main()"></script>
     <script src="events.js" onload="main()"></script>
     <script src="calendar.js" onload="main()"></script>
 
