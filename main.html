@@ -162,6 +162,38 @@
             font-size: 0.9em;
             border-top: 3px solid var(--medium-grey);
         }
+
+        /* Container and Box Styles */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .box h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .box p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -176,13 +208,13 @@
             <li>
                 <a href="#">Om oss</a>
                 <ul>
-                    <li><a href="leadership.html">Styret</a></li>
+                    <li><a href="#">Styret</a></li>
                     <li><a href="#">Historie</a></li>
                     <li><a href="#">Visjon</a></li>
                 </ul>
             </li>
             <li>
-                <a href="Kalender.html">Arrangementer</a>
+                <a href="#">Arrangementer</a>
             </li>
             <li>
                 <a href="#">Medlemskap</a>
@@ -203,9 +235,12 @@
         </ul>
     </nav>
 
+    <div class="container"></div>
 
+    <script src="leadership.js" onload="leadership()"></script>
+    <script src="events.js" defer></script>
+    <script src="calendar.js" defer></script>
 
-    
     <footer>
         <p>&copy; 2025 Maskiningeniør i Trondheim. Alle rettigheter reservert.</p>
     </footer>
