@@ -9,6 +9,10 @@ TO DO:
         - Trykke på et gitt arrangement og kommer inn på egen side om det arrangementet?
         - Se Tim og Shænko sin nettside
 
-X Gjøre så MIT-logoen tar brukeren til home.html
 
-- Ta en pils
+
+Gjøre så MIT-logoen tar brukeren til home.html
+
+Lage en generell mal for alle nye sider
+
+Ta en pils
