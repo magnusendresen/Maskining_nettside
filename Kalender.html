@@ -5,27 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalender</title>
     <style>
+        :root {
+            --white: #ffffff;
+            --light-grey: #f4f4f4;
+            --dark-grey: #333333;
+            --primary-color: #444444;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--light-grey);
+            color: var(--dark-grey);
         }
+
         .header {
-            background-color: #333;
-            color: #fff;
+            background-color: var(--dark-grey);
+            color: var(--white);
             padding: 10px 0;
             text-align: center;
         }
+
         .header img {
             max-width: 100px;
         }
+
         nav {
-            background-color: #444;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: var(--white);
             padding: 10px 0;
         }
+
         nav ul {
             list-style: none;
             padding: 0;
@@ -33,39 +44,62 @@
             display: flex;
             justify-content: center;
         }
+
         nav ul li {
             margin: 0 15px;
             position: relative;
         }
+
         nav ul li a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
             padding: 5px 10px;
         }
+
         nav ul li ul {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background-color: #444;
+            background-color: var(--primary-color);
             padding: 10px 0;
             list-style: none;
         }
+
         nav ul li:hover ul {
             display: block;
         }
+
         nav ul li ul li {
             margin: 0;
         }
+
         nav ul li ul li a {
             padding: 5px 10px;
         }
+
         .calendar-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: calc(100vh - 160px); /* Adjust height based on header and nav */
             padding: 20px;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--dark-grey);
+            color: var(--white);
         }
     </style>
 </head>
@@ -105,7 +139,6 @@
                 </ul>
             </li>
         </ul>
-    </ul>
     </nav>
 
     <div class="calendar-container">
@@ -118,5 +151,9 @@
             scrolling="no">
         </iframe>
     </div>
+
+    <footer>
+        &copy; 2023 Maskiningeniør i Trondheim. Alle rettigheter reservert.
+    </footer>
 </body>
 </html>
