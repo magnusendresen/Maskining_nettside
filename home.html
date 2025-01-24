@@ -1,44 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-
-    /*
-    Color palette:
-    https://coolors.co/141414-292929-4f4d4e-d45436-f5f5f5
-     */
-    
-    h1 {
-    color: #1F1F1F;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 2.5em;
-    margin: 0.5em 0;
-}
-</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Maskiningeniør i Trondheim</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --dark-grey: #141414;
+            --medium-grey: #292929;
+            --light-grey: #4F4D4E;
+            --orange: #D45436;
+            --white: #F5F5F5;
+            --soft-grey: #EAEAEA;
+            --hover-grey: #777;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, var(--white), var(--soft-grey));
+            color: var(--dark-grey);
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--white);
+            color: var(--dark-grey);
+            border-bottom: 3px solid var(--medium-grey);
+        }
+
+        .header img {
+            max-width: 150px;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        /* Navigation */
+        nav {
+            text-align: center;
+            background-color: var(--medium-grey);
+            padding: 15px 0;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            position: relative;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            padding: 10px 20px;
+            display: block;
+            background-color: var(--light-grey);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--orange);
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            top: 45px;
+            left: 0;
+            background-color: var(--light-grey);
+            padding: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul li ul li {
+            margin: 0;
+        }
+
+        nav ul li ul li a {
+            padding: 10px 20px;
+            white-space: nowrap;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+            animation: dropdown 0.3s ease-out;
+        }
+
+        @keyframes dropdown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section */
+        section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome, .news, .calendar, .sponsors, .quotes, .feedback {
+            margin-bottom: 30px;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .sponsors img {
+            max-width: 100px;
+            margin: 10px;
+        }
+
+        blockquote {
+            font-style: italic;
+            color: var(--light-grey);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--dark-grey);
+            color: var(--white);
+            font-size: 0.9em;
+            border-top: 3px solid var(--medium-grey);
+        }
+    </style>
 </head>
 <body>
 
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="img/MiT Logo.svg" alt="Logo" style="max-width: 200px; height: auto;">
+    <div class="header">
+        <img src="img/MiT Logo.svg" alt="MiT Logo">
         <h1>Maskiningeniør i Trondheim</h1>
     </div>
-    
-<div style="text-align: center;">
-    <a href="leadership.html" style="text-decoration: none;">
-        <button style="background-color: #4F4D4E; color: white; padding: 15px 32px; text-align: center; font-size: 16px; margin: 4px 2px; border: none; cursor: pointer; border-radius: 4px;">Leadership</button>
-    </a>
-    <a href="projects.html" style="text-decoration: none;">
-        <button style="background-color: #4F4D4E; color: white; padding: 15px 32px; text-align: center; font-size: 16px; margin: 4px 2px; border: none; cursor: pointer; border-radius: 4px;">Projects</button>
-    </a>
-    <a href="contact.html" style="text-decoration: none;">
-        <button style="background-color: #4F4D4E; color: white; padding: 15px 32px; text-align: center; font-size: 16px; margin: 4px 2px; border: none; cursor: pointer; border-radius: 4px;">Contact</button>
-    </a>
-    <a href="event.html" style="text-decoration: none;">
-        <button style="background-color: #4F4D4E; color: white; padding: 15px 32px; text-align: center; font-size: 16px; margin: 4px 2px; border: none; cursor: pointer; border-radius: 4px;">Events</button>
-    </a>
-</div>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Om oss</a>
+                <ul>
+                    <li><a href="leadership.html">Styret</a></li>
+                    <li><a href="#">Historie</a></li>
+                    <li><a href="#">Visjon</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="events.html">Arrangementer</a>
+            </li>
+            <li>
+                <a href="#">Medlemskap</a>
+                <ul>
+                    <li><a href="#">Fordeler</a></li>
+                    <li><a href="#">Bli medlem</a></li>
+                    <li><a href="#">Kontingent</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Ressurser</a>
+                <ul>
+                    <li><a href="#">Dokumenter</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Kontakt oss</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="welcome">
+            <h2>Velkommen til Maskiningeniør i Trondheim!</h2>
+            <p>Vi er en linjeforening som jobber for å fremme fellesskap og faglig utvikling blant maskiningeniørstudenter i Trondheim.</p>
+        </div>
+
+        <div class="news">
+            <h2>Siste Nytt</h2>
+            <p>Arrangement 2025 planlegges nå! Hold av datoen.</p>
+            <p>Besøk vår stand på campus i neste uke!</p>
+        </div>
+
+        <div class="calendar">
+            <h2>Kommende Arrangementer</h2>
+            <p>Abonner på vår kalender for å få arrangementer direkte inn på mobilen din!</p>
+            <a href="#" style="color: var(--orange);">Last ned kalender</a>
+        </div>
+
+        <div class="sponsors">
+            <h2>Våre Sponsorer</h2>
+            <img src="img/sponsor1.svg" alt="Sponsor 1">
+            <img src="img/sponsor2.svg" alt="Sponsor 2">
+        </div>
+
+        <div class="quotes">
+            <h2>Studenthistorier</h2>
+            <blockquote>"Å være med i linjeforeningen har gjort studietiden min mye bedre!" - Student</blockquote>
+        </div>
+
+        <div class="feedback">
+            <h2>Tilbakemelding</h2>
+            <p>Har du forslag til hvordan vi kan forbedre oss? Vi vil gjerne høre fra deg!</p>
+            <a href="#" style="color: var(--orange);">Gi tilbakemelding</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Maskiningeniør i Trondheim. Alle rettigheter reservert.</p>
+    </footer>
+
 </body>
 </html>
