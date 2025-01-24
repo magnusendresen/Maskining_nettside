@@ -1,0 +1,5 @@
+Gjøre så MIT-logoen tar brukeren til home.html
+
+Lage en generell mal for alle nye sider
+
+Ta en pils
