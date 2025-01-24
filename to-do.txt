@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 TO DO:
 
 
@@ -10,12 +9,6 @@ TO DO:
         - Trykke på et gitt arrangement og kommer inn på egen side om det arrangementet?
         - Se Tim og Shænko sin nettside
 
+X Gjøre så MIT-logoen tar brukeren til home.html
 
-
-=======
-Gjøre så MIT-logoen tar brukeren til home.html
-
-Lage en generell mal for alle nye sider
-
-Ta en pils
->>>>>>> 6b29fa6445ea56ca2df0b81b0d57084f70c4bca5
+- Ta en pils
