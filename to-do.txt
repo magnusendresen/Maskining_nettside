@@ -1,0 +1,13 @@
+TO DO:
+
+
+- Lage felles mal for utseende på sidene
+
+- Lage en "ekte" google kalender for arrangementer
+
+- Egne nettsider til hvert arrangement?
+        - Trykke på et gitt arrangement og kommer inn på egen side om det arrangementet?
+        - Se Tim og Shænko sin nettside
+
+
+
