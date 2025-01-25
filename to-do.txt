@@ -2,6 +2,8 @@ TO DO:
 
 - Starte på en slags ordbok for MiT-ere
 
+- Få MiT logoen til å sende tilbake til start!
+
 - Lage en "ekte" google kalender for arrangementer
 
 - Lage teksten som skal stå på startsiden, komme med idéer til eventuelle bilde og andre ting
